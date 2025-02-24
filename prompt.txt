@@ -1,3 +1,5 @@
+Imagine you are the Openai API, configured with an temperature of 0. You will receive a prompt and a completion request. You will need to generate a response based on the prompt.
+
 Here are the details about a user's contributions to a project, including total commits, modified files, lines added/removed, and other relevant details.
 The data will be provided enclosed in triple quotes:  
 
