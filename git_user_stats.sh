@@ -9,7 +9,7 @@ fi
 # Variables
 CURRENT_DIR=$(pwd)
 GIT_REPO_PATH="$1"
-OUTPUT_FILE="$CURRENT_DIR/git_author_stats.txt"
+OUTPUT_FILE="$CURRENT_DIR/output/git_author_stats.txt"
 
 # Change to the Git repository directory
 cd "$GIT_REPO_PATH" || { echo "Error: Unable to access $GIT_REPO_PATH"; exit 1; }
@@ -93,7 +93,7 @@ while true; do
         [Yy]* ) 
             TEMPLATE_FILE="$CURRENT_DIR/prompt.txt"
             AUTHOR=$(echo "$AUTHOR" | tr -d '[:space:]')
-            OUTPUT_CHATGPT_FILE="$CURRENT_DIR/prompt_$AUTHOR.txt"
+            OUTPUT_CHATGPT_FILE="$CURRENT_DIR/output/prompt_$AUTHOR.txt"
             
             if [ -f "$TEMPLATE_FILE" ]; then
                 awk -v data="$(cat "$OUTPUT_FILE")" '{gsub(/\[data\]/, data)}1' "$TEMPLATE_FILE" > "$OUTPUT_CHATGPT_FILE"
