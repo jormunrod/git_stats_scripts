@@ -85,3 +85,28 @@ echo -e "\nAverage lines added and removed per commit:" >> "$OUTPUT_FILE"
 git log --author="$AUTHOR_EMAILS" --pretty=tformat: --numstat | awk '{added+=$1; deleted+=$2; commits+=1} END {if (commits > 0) {print "Average lines added:", added/commits, "\nAverage lines removed:", deleted/commits} else {print "No line changes"}}' >> "$OUTPUT_FILE"
 
 echo -e "\nStatistics saved in $OUTPUT_FILE"
+
+# Ask to create a .txt with a prompt to share with chatgpt
+while true; do
+    read -p "Would you like to create a .txt file with the prompt for ChatGPT? (y/n): " yn
+    case $yn in
+        [Yy]* ) 
+            TEMPLATE_FILE="$CURRENT_DIR/prompt.txt"
+            AUTHOR=$(echo "$AUTHOR" | tr -d '[:space:]')
+            OUTPUT_CHATGPT_FILE="$CURRENT_DIR/prompt_$AUTHOR.txt"
+            
+            if [ -f "$TEMPLATE_FILE" ]; then
+                awk -v data="$(cat "$OUTPUT_FILE")" '{gsub(/\[data\]/, data)}1' "$TEMPLATE_FILE" > "$OUTPUT_CHATGPT_FILE"
+            else
+                echo -e "Statistics for: $AUTHOR\n\n$(cat "$OUTPUT_FILE")" > "$OUTPUT_CHATGPT_FILE"
+            fi
+            
+            echo -e "Statistics saved in $OUTPUT_CHATGPT_FILE"
+            break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+

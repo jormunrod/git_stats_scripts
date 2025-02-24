@@ -1,0 +1,14 @@
+Here are the details about a user's contributions to a project, including total commits, modified files, lines added/removed, and other relevant details.
+The data will be provided enclosed in triple quotes:  
+
+"""  
+[data] 
+"""
+
+Based on the information provided about their contributions, what is the most likely role of this user in the project? 
+
+Possible roles: 
+[frontend, backend, tester, creator, maintainer, bugs, CI/CD] 
+
+Please return your answer in JSON format with the following fields:  
+[author, frontent: percentage, backend: percentage, tester: percentage, creator: percentage, maintainer: percentage, bugs: percentage, CI/CD: percentage]
