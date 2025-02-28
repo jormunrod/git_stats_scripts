@@ -104,7 +104,7 @@ while true; do
             echo -e "Statistics saved in $OUTPUT_CHATGPT_FILE"
             break;;
         [Nn]* ) exit;;
-        * ) echo "Please answer yes or no.";;
+        * ) echo "Please answer yes (y) or no (n).";;
     esac
 done
 
