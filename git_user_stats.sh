@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Validate input parameters
+# Validate input parameter
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <git_repository_path>"
     exit 1
